@@ -1,0 +1,80 @@
+/* ========================================
+   Design System — TJW Perfumes
+   ======================================== */
+
+:root {
+  /* --- Typography --- */
+  --font-primary: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --text-xs: 0.65rem;    /* 10.4px — badges, labels */
+  --text-sm: 0.75rem;    /* 12px   — captions, tags */
+  --text-base: 0.875rem; /* 14px   — body text */
+  --text-md: 1rem;       /* 16px   — default */
+  --text-lg: 1.25rem;    /* 20px   — card titles */
+  --text-xl: 1.5rem;     /* 24px   — section titles */
+  --text-2xl: 2rem;      /* 32px   — page titles */
+  --text-3xl: 2.75rem;   /* 44px   — hero heading */
+  --text-4xl: 3.5rem;    /* 56px   — hero large */
+
+  /* --- Colors: Background --- */
+  --color-bg-primary: #0a0a0a;
+  --color-bg-secondary: #111111;
+  --color-bg-card: #141414;
+  --color-bg-elevated: #1a1a1a;
+  --color-bg-hover: #1f1f1f;
+
+  /* --- Colors: Brand / Accent --- */
+  --color-gold: #c9a96e;
+  --color-gold-light: #d4af37;
+  --color-gold-dark: #a8893e;
+  --color-gold-subtle: rgba(201, 169, 110, 0.1);
+
+  /* --- Colors: Text --- */
+  --color-text-primary: #f5f5f5;
+  --color-text-secondary: #a0a0a0;
+  --color-text-muted: #5a5a5a;
+  --color-text-inverse: #0a0a0a;
+
+  /* --- Colors: Border --- */
+  --color-border: #222222;
+  --color-border-hover: #333333;
+  --color-border-active: var(--color-gold);
+
+  /* --- Colors: Feedback --- */
+  --color-success: #25d366;
+  --color-error: #e74c3c;
+  --color-overlay: rgba(0, 0, 0, 0.6);
+
+  /* --- Spacing --- */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 40px;
+  --space-2xl: 64px;
+  --space-3xl: 80px;
+
+  /* --- Radius --- */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-full: 9999px;
+
+  /* --- Shadows --- */
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.3);
+  --shadow-hover: 0 8px 30px rgba(201, 169, 110, 0.12);
+  --shadow-elevated: 0 12px 40px rgba(0, 0, 0, 0.5);
+
+  /* --- Transitions --- */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.3s ease;
+
+  /* --- Layout --- */
+  --max-width: 1200px;
+  --header-height: 64px;
+}
