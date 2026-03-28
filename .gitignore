@@ -24,6 +24,13 @@ Thumbs.db
 *.log
 npm-debug.log*
 
+# Claude
+.claude/
+CLAUDE.md
+
+# Vite cache
+.vite/
+
 # Cache
 .cache/
 .parcel-cache/

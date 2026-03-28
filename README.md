@@ -2,24 +2,29 @@
 
 A luxury perfume e-commerce store built with Vue 3 + Vite, hosted on GitHub Pages.
 
+**Live:** [https://qenawi.github.io/perfume-store/](https://qenawi.github.io/perfume-store/)
+
 ## Features
 
 - Product catalog with category filtering (Men, Women, Unisex)
-- Bottle size and color selection
+- Bottle size and color selection per product
 - Cart with localStorage persistence
 - WhatsApp order integration (no payment gateway)
-- Order tracking via Firebase Firestore
-- Dynamic time-based greeting
-- Responsive dark luxury theme
-- All text configurable from a single config file
+- Silent order tracking via Firebase Firestore
+- Dynamic time-based greeting (Good Morning / Afternoon / Evening)
+- Responsive dark luxury theme with gold accents
+- All text and branding configurable from a single config file
+- Currency: EGP (configurable)
+- Auto-deploy via GitHub Actions CI/CD
 
 ## Tech Stack
 
 - **Frontend**: Vue 3, Vue Router, Vite
 - **Database**: Firebase Firestore + Storage
-- **Hosting**: GitHub Pages
-- **Font**: Inter (Helvetica alternative)
+- **Hosting**: GitHub Pages (via GitHub Actions)
+- **Font**: Inter (Google Fonts)
 - **Cart**: localStorage
+- **Orders**: WhatsApp + Firestore tracking
 
 ## Quick Start
 
@@ -32,9 +37,6 @@ npm run dev
 
 # Build for production
 npm run build
-
-# Deploy to GitHub Pages
-npm run deploy
 ```
 
 ## Configuration
@@ -117,38 +119,44 @@ service cloud.firestore {
 }
 ```
 
-6. Switch from dummy data to Firebase: set `USE_DUMMY = false` in `src/composables/useProducts.js` and uncomment the Firebase imports.
+6. Switch from dummy data: set `USE_DUMMY = false` in `src/composables/useProducts.js` and uncomment the Firebase imports.
 
-## Switching from Dummy Data
+## Deployment
 
-The store ships with 8 dummy products for testing. To use real Firebase data:
+Deployment is automatic via GitHub Actions. Every push to `main` triggers a build and deploy.
 
-1. Fill in `src/firebase/config.js` with your credentials
-2. Open `src/composables/useProducts.js`
-3. Set `USE_DUMMY = false`
-4. Uncomment the Firebase import lines at the top
+### Setup (one time)
+1. Go to repo **Settings > Pages**
+2. Set **Source** to **GitHub Actions**
+3. Push to `main` — the workflow builds and deploys automatically
 
-## Deploy to GitHub Pages
+### Manual deploy
+```bash
+npm run build
+```
 
-1. Create a GitHub repo named `perfum_store`
-2. Push your code
-3. Run `npm run deploy`
-4. Enable Pages in repo Settings > Pages > Source: `gh-pages` branch
-
-Your site will be live at `https://<username>.github.io/perfum_store/`
+### Important
+- `vite.config.js` base path must match the repo name: `/perfume-store/`
+- If you rename the repo, update the `base` value accordingly
 
 ## Project Structure
 
 ```
 src/
-├── assets/styles/      # Design system (variables.css, main.css)
-├── components/         # Navbar, Footer, HeroBanner, ProductCard,
-│                       # ProductGrid, CategoryFilter, CartDrawer, CartItem
-├── composables/        # useCart, useProducts, useTracking
-├── config/site.js      # All configurable text & settings
-├── firebase/config.js  # Firebase credentials
-├── router/index.js     # Vue Router (hash mode)
-├── views/              # HomeView, ShopView, ProductView
+├── assets/styles/        # Design system (variables.css, main.css)
+├── components/           # Navbar, Footer, HeroBanner, ProductCard,
+│                         # ProductGrid, CategoryFilter, CartDrawer, CartItem
+├── composables/
+│   ├── useCart.js         # Cart state + localStorage sync
+│   ├── useProducts.js     # Product fetching (dummy / Firebase)
+│   └── useTracking.js     # Silent order logging to Firestore
+├── config/site.js         # All configurable text & settings
+├── firebase/config.js     # Firebase credentials (placeholder)
+├── router/index.js        # Vue Router (hash mode)
+├── views/
+│   ├── HomeView.vue       # Hero + featured products
+│   ├── ShopView.vue       # Category filter + full catalog
+│   └── ProductView.vue    # Product detail with size/color pickers
 ├── App.vue
 └── main.js
 ```
